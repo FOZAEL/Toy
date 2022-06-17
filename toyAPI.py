@@ -6,7 +6,7 @@ api = Api(app)
 
 class Toy(Resource):
     def get(self, name):
-        return {'massage': 'Hello {}'.format(name)}
+        return {'massage': 'Hello {} !'.format(name)}
 
 api.add_resource(Toy, '/hello/<string:name>')
 
