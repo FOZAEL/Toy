@@ -1,7 +1,13 @@
 version: '3.7'
 
 services:
-  django_gunicorn:
+  flask:
+    build: ./flask
+    ports:
+      - 5000:5000
+    restart: always
+
+  toy:
     volumes:
       - ./toy/static:/static
     env_file:
@@ -13,6 +19,7 @@ services:
     depends_on:
       - flask
     restart: always
+
   nginx:
     build: ./nginx
     volumes:
@@ -20,11 +27,5 @@ services:
     ports:
       - "8000:80"
     depends_on:
-      - django_gunicorn
+      - toy
     restart: always
-  flask:
-    build: ./flask
-    ports:
-      - "5000:5000"
-    restart: always
-

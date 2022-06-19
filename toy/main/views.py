@@ -13,7 +13,7 @@ def index(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             print(name)
-            response = requests.get("http://localhost:5000" + "/hello/"+name)
+            response = requests.get("http://172.25.0.2:5000" + "/hello/"+name)
             print(response.json())
             print(response.json()['massage'])
             return render(request, 'index.html',{'form' : form, 'massage' : response.json()["massage"]})
